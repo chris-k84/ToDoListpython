@@ -17,8 +17,8 @@ class ModelView():
         self.root.mainloop()
 
     def add(self, event):
-        self.Task.taskname = self.view.TaskName
-        self.Task.taskdescription = self.view.TaskDescription
+        self.Task.taskname = self.view.TaskName.get()
+        self.Task.taskdescription = self.view.TaskDescription.get()
         self.TaskList.append(self.Task)
 
     def remove(self, event):
