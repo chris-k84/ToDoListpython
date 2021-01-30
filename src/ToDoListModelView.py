@@ -23,10 +23,14 @@ class ModelView():
         #self.TaskList.append(task)
         test = task.taskname + " " + task.taskdescription
         self.TaskList.append(test)
-        self.view.taskListView.insert(Tk.END, "{:1}{:5}".format(task.taskname, task.taskdescription) )
+        self.view.taskListView.insert(Tk.ACTIVE, "{:<1s}{:>25s}".format(task.taskname, task.taskdescription) )
 
     def remove(self, event):
         index = self.view.taskListView.curselection()
-        self.TaskList.remove(index)
-        self.view.taskListView.delete(index)
+        size = self.view.taskListView.size()
+        if len(index) == 0:
+            return
+        if (index[0]+1) != size:
+            del self.TaskList[index[0]]
+            self.view.taskListView.delete(index)
 
